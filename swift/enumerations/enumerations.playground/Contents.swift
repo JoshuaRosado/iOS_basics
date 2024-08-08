@@ -52,3 +52,65 @@ let walking = Exercise2.walking(minutes: 60)
 
 print(Exercise2.running(destination: "Park"))
 
+
+
+// Example of how we use enumerations
+
+//--------- Not readible
+
+let ArrayDaysOfWeek = ["Sunday","Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+let humpDayA = ArrayDaysOfWeek[3] // assigning constant humpDayA to "Wednesday"
+
+// -------- READIBLE
+
+enum DaysOfWeek: String{
+    case sunday, monday, tuesday, wednesday, thursday, friday, saturday
+}
+
+let humpDay = DaysOfWeek.wednesday // assigning constant humpDayA to "Wednesday"
+
+
+print(humpDay.rawValue.capitalized) // capitalizing the raw value of "Wednesday"
+
+
+func whatToDo(day:DaysOfWeek) -> String{
+    switch day {
+        
+    case .sunday:
+        return "Go to church"
+    case .monday:
+        return "Go to work"
+    case .tuesday:
+        return "Eat pizza at work"
+    case .wednesday:
+        return "Get some drinks after work"
+    case .thursday:
+        return "Get milshakes after work"
+    case .friday:
+        return "We get paid today"
+    case .saturday:
+        return "Have a beer"
+    }
+}
+
+print(whatToDo(day: .friday))
+
+
+
+
+enum Activity {
+    case sleep
+    case game(name: String)
+    case run(distance: Int)
+    case eat
+}
+
+struct Activities{
+    var morning: Activity
+    var afternoon: Activity
+    var evening: Activity
+}
+
+
+let jamesActivity = Activities(morning: .run(distance: 3), afternoon: .eat, evening: .game(name: "Super Mario 3D World"))
